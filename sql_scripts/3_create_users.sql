@@ -1,5 +1,5 @@
-DELETE FROM "User";
 DELETE FROM "User_to_language";
+DELETE FROM "User";
 ALTER SEQUENCE "User_id_seq" RESTART WITH 1;
 
 do $$
