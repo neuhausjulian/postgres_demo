@@ -8,3 +8,6 @@ User --name to describe the new migration
 == Format prisma schema
 npx prisma format
 
+== Run app from dev environment
+
+npx ts-node app/index.ts
