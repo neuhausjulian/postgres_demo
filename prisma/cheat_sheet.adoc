@@ -8,6 +8,9 @@ User --name to describe the new migration
 == Format prisma schema
 npx prisma format
 
+== Deploy missing migrations to database
+npx prisma migrate deploy
+
 == Run app from dev environment
 npx ts-node src/index.ts
 
