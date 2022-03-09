@@ -9,5 +9,7 @@ User --name to describe the new migration
 npx prisma format
 
 == Run app from dev environment
-
 npx ts-node app/index.ts
+
+== Start prisma studio (visual web database client)
+npx prisma studio
