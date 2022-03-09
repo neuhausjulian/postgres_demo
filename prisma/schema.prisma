@@ -17,9 +17,20 @@ model User {
   lastname          String?
   languages_by_name String[]
   languages_by_id   Int[]
+  User_to_language  User_to_language[]
 }
 
 model Language {
   id               Int                @id @default(autoincrement())
   name             String             @unique
+  User_to_language User_to_language[]
+}
+
+model User_to_language {
+  user        User     @relation(fields: [user_id], references: [id])
+  user_id     Int
+  language    Language @relation(fields: [language_id], references: [id])
+  language_id Int
+
+  @@unique([user_id, language_id], name: "User_to_language_Identifier")
 }
