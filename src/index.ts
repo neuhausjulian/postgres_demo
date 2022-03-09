@@ -1,26 +1,20 @@
-import { PrismaClient } from '@prisma/client'
+import express from "express"
+import { DatabaseClient } from "./database_client";
 
-const prisma = new PrismaClient()
+const app = express()
+const port = 9999;
+app.set('json spaces', 2)
 
-async function main() {
-    const new_user = {
-        firstname: 'Alice',
-        lastname: 'Doe',
-        email: 'alice.doe@prisma.io'
-    }
+const databaseClient = new DatabaseClient();
 
-    await prisma.user.create({
-        data: new_user
-    })
+app.get( "/users", ( req, res ) => {  
+    databaseClient
+    .getAllUsers()
+    .then(users => res.json(users))
+    .catch(error => res.status(500).json({"error": "Unable to load users from database"}))    
+});
 
-    const allUsers = await prisma.user.findMany()
-    console.log(allUsers)
-}
-
-main()
-  .catch((e) => {
-    throw e
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+// start the express server
+app.listen( port, () => {
+    console.log('server started at http://localhost:' + port);
+});
