@@ -1,4 +1,10 @@
 = Prisma cheat sheet
 
-== Create and apply first migration
+== Create and apply migration
 npx prisma migrate dev --name init
+
+User --name to describe the new migration
+
+== Format prisma schema
+npx prisma format
+
