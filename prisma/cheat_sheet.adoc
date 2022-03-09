@@ -1,0 +1,4 @@
+= Prisma cheat sheet
+
+== Create and apply first migration
+npx prisma migrate dev --name init
