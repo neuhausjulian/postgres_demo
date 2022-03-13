@@ -1,0 +1,13 @@
+= grpc notes
+
+== Install grpc tools
+
+npm install -g grpc-tools
+npm install -g grpc_tools_node_protoc_ts
+
+== Generate static grpc client and server *.js files
+
+cd grpc
+grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./static_codegen/ --grpc_out=grpc_js:./static_codegen users.proto
+
+grpc_tools_node_protoc --ts_out=./static_codegen/ --plugin=protoc-gen-grpc=../node_modules/.bin/protoc-gen-ts users.proto

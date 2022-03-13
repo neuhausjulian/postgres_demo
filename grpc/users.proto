@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package users;
+
+service Users {
+   rpc GetAll(Void) returns (User) {}
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+}
+
+// required for service methods without any input parameters
+message Void {
+}
